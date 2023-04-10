@@ -1,4 +1,4 @@
-# Audio Playback using Bluetooth Control.
+# Audio Playback using Bluetooth Control
 
 # Project Team:
 Daanish Shariff \

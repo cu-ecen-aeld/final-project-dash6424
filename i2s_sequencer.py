@@ -3,7 +3,7 @@ import time
 
 # Define the file path and songs
 file_path = "audio_test.txt"
-song1_path = "john-denver-take-me-home-country-roads-audio.wav"
+song1_path = "test.wav"
 song2_path = "Front_Center.wav"
 
 # Get the initial modification time of the file

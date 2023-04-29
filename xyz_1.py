@@ -13,9 +13,6 @@ continue_playing = True
 current_song = None
 idx = 0
 
-# Initialize the previous value variable to None
-previous_value = None
-
 while continue_playing:
     with open(file_path, "r") as f:
         lines = f.readlines()
@@ -63,20 +60,16 @@ while continue_playing:
         current_song = songs[idx]
         os.system(f"aplay -q {current_song} &")  # add "&" to run in the background
 
-    elif last_line == "5" and previous_value != "5":
+    elif last_line == "5":
         # Stop the current song, if there is one
         if current_song is not None:
             os.system("killall aplay")
             current_song = None  # reset the current song variable
             idx = 0
 
-    # Set the file to stop state.
+    # Set the file to unknown state.
     with open(file_path, "w") as f:
-        f.write("5\n")
-
-    # Update the previous value variable
-    previous_value = last_line
-    
+        f.write("9\n")    
     
     # Wait for a few seconds before checking the file again
     time.sleep(2)

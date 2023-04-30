@@ -3,8 +3,8 @@ import time
 
 # Define the file path and songs
 # Set the audio files
-songs = ["test1.wav", "test2.wav", "test3.wav", "test4.wav"]
-file_path = "audio_test.txt"
+songs = ["/usr/bin/test1.wav", "/usr/bin/test2.wav", "/usr/bin/test3.wav", "/usr/bin/test4.wav"]
+file_path = "/usr/bin/audio_test.txt"
 
 # Initialize the flag variable to True
 continue_playing = True
@@ -15,7 +15,10 @@ idx = 0
 
 # Set the file to unknown state.
 with open(file_path, "w") as f:
-    f.write("9\n") 
+    f.write("09\n") 
+
+# Wait for a few seconds before checking the file again
+time.sleep(2)
 
 while continue_playing:
     with open(file_path, "r") as f:
@@ -34,7 +37,7 @@ while continue_playing:
         os.system(f"aplay -q {current_song} &")  # add "&" to run in the background
         # Set the file to unknown state.
         with open(file_path, "w") as f:
-            f.write("9\n")      
+            f.write("09\n")      
 
     elif last_line == "02":
         # Stop the current song, if there is one
@@ -50,7 +53,7 @@ while continue_playing:
         os.system(f"aplay -q {current_song} &")  # add "&" to run in the background
         # Set the file to unknown state.
         with open(file_path, "w") as f:
-            f.write("9\n")   
+            f.write("09\n")   
 
     elif last_line == "03":
         # Stop the current song, if there is one
@@ -66,7 +69,7 @@ while continue_playing:
         os.system(f"aplay -q {current_song} &")  # add "&" to run in the background
         # Set the file to unknown state.
         with open(file_path, "w") as f:
-            f.write("9\n") 
+            f.write("09\n") 
 
     elif last_line == "04":
         # Stop the current song, if there is one
@@ -74,9 +77,11 @@ while continue_playing:
             os.system("killall aplay")
             current_song = None  # reset the current song variable
             idx = 0
+        # Wait for a few seconds before checking the file again
+        time.sleep(2)
         # Set the file to unknown state.
         with open(file_path, "w") as f:
-            f.write("9\n") 
+            f.write("09\n") 
     else:
         pass
     

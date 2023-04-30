@@ -16,18 +16,18 @@ idx = 0
 
 # Set the file to unknown state.
 with open(file_path, "w") as f:
-    fcntl.flock(file, fcntl.LOCK_EX)
+    fcntl.flock(f, fcntl.LOCK_EX)
     f.write("09\n") 
-    fcntl.flock(file, fcntl.LOCK_UN)
+    fcntl.flock(f, fcntl.LOCK_UN)
 
 # Wait for a few seconds before checking the file again
 time.sleep(2)
 
 while continue_playing:
     with open(file_path, "r") as f:
-        fcntl.flock(file, fcntl.LOCK_EX)
+        fcntl.flock(f, fcntl.LOCK_EX)
         lines = f.readlines()
-        fcntl.flock(file, fcntl.LOCK_UN)
+        fcntl.flock(f, fcntl.LOCK_UN)
         last_line = lines[-1].strip()
 
     # Check if the last line is a valid command
@@ -42,9 +42,9 @@ while continue_playing:
         os.system(f"aplay -q {current_song} &")  # add "&" to run in the background
         # Set the file to unknown state.
         with open(file_path, "w") as f:
-            fcntl.flock(file, fcntl.LOCK_EX)
+            fcntl.flock(f, fcntl.LOCK_EX)
             f.write("09\n") 
-            fcntl.flock(file, fcntl.LOCK_UN)
+            fcntl.flock(f, fcntl.LOCK_UN)
 
     elif last_line == "02":
         # Stop the current song, if there is one
@@ -60,9 +60,9 @@ while continue_playing:
         os.system(f"aplay -q {current_song} &")  # add "&" to run in the background
         # Set the file to unknown state.
         with open(file_path, "w") as f:
-            fcntl.flock(file, fcntl.LOCK_EX)
+            fcntl.flock(f, fcntl.LOCK_EX)
             f.write("09\n") 
-            fcntl.flock(file, fcntl.LOCK_UN) 
+            fcntl.flock(f, fcntl.LOCK_UN) 
 
     elif last_line == "03":
         # Stop the current song, if there is one
@@ -78,9 +78,9 @@ while continue_playing:
         os.system(f"aplay -q {current_song} &")  # add "&" to run in the background
         # Set the file to unknown state.
         with open(file_path, "w") as f:
-            fcntl.flock(file, fcntl.LOCK_EX)
+            fcntl.flock(f, fcntl.LOCK_EX)
             f.write("09\n") 
-            fcntl.flock(file, fcntl.LOCK_UN)
+            fcntl.flock(f, fcntl.LOCK_UN)
 
     elif last_line == "04":
         # Stop the current song, if there is one
@@ -92,9 +92,9 @@ while continue_playing:
         time.sleep(2)
         # Set the file to unknown state.
         with open(file_path, "w") as f:
-            fcntl.flock(file, fcntl.LOCK_EX)
+            fcntl.flock(f, fcntl.LOCK_EX)
             f.write("09\n") 
-            fcntl.flock(file, fcntl.LOCK_UN)
+            fcntl.flock(f, fcntl.LOCK_UN)
     else:
         pass
     

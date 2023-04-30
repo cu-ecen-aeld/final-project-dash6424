@@ -23,7 +23,7 @@ while continue_playing:
         last_line = lines[-1].strip()
 
     # Check if the last line is a valid command
-    if last_line == "1":
+    if last_line == "01":
         # Stop the current song, if there is one
         if current_song is not None:
             os.system("killall aplay")
@@ -32,17 +32,15 @@ while continue_playing:
         # Play the new song
         current_song = songs[idx]
         os.system(f"aplay -q {current_song} &")  # add "&" to run in the background
+        # Set the file to unknown state.
+        with open(file_path, "w") as f:
+            f.write("9\n")      
 
-    elif last_line == "2":
-        # Stop the current song, if there is one
-        if current_song is not None:                
-            os.kill(os.getpid(), 2)  # add "&" to run in the background
-
-    elif last_line == "3":
+    elif last_line == "02":
         # Stop the current song, if there is one
         if current_song is not None:
             os.system("killall aplay")
-            time.sleep(1)  # wait for the current song to stop
+            time.sleep(1)  # wait for the current song to stop  
         
         # Play the previous song
         idx = idx - 1
@@ -50,8 +48,11 @@ while continue_playing:
             idx = 3
         current_song = songs[idx]
         os.system(f"aplay -q {current_song} &")  # add "&" to run in the background
+        # Set the file to unknown state.
+        with open(file_path, "w") as f:
+            f.write("9\n")   
 
-    elif last_line == "4":
+    elif last_line == "03":
         # Stop the current song, if there is one
         if current_song is not None:
             os.system("killall aplay")
@@ -63,17 +64,21 @@ while continue_playing:
             idx = 0
         current_song = songs[idx]
         os.system(f"aplay -q {current_song} &")  # add "&" to run in the background
+        # Set the file to unknown state.
+        with open(file_path, "w") as f:
+            f.write("9\n") 
 
-    elif last_line == "5":
+    elif last_line == "04":
         # Stop the current song, if there is one
         if current_song is not None:
             os.system("killall aplay")
             current_song = None  # reset the current song variable
             idx = 0
-
-    # Set the file to unknown state.
-    with open(file_path, "w") as f:
-        f.write("9\n")    
+        # Set the file to unknown state.
+        with open(file_path, "w") as f:
+            f.write("9\n") 
+    else:
+        pass
     
     # Wait for a few seconds before checking the file again
     time.sleep(2)

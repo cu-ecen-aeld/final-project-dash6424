@@ -17,7 +17,7 @@ idx = 0
 # Set the file to unknown state.
 with open(file_path, "w") as f:
     fcntl.flock(f, fcntl.LOCK_EX)
-    f.write("09\n") 
+    f.write("9\n") 
     fcntl.flock(f, fcntl.LOCK_UN)
 
 # Wait for a few seconds before checking the file again
@@ -31,7 +31,7 @@ while continue_playing:
         last_line = lines[-1].strip()
 
     # Check if the last line is a valid command
-    if last_line == "01":
+    if last_line == "1":
         # Stop the current song, if there is one
         if current_song is not None:
             os.system("killall aplay")
@@ -43,10 +43,10 @@ while continue_playing:
         # Set the file to unknown state.
         with open(file_path, "w") as f:
             fcntl.flock(f, fcntl.LOCK_EX)
-            f.write("09\n") 
+            f.write("9\n") 
             fcntl.flock(f, fcntl.LOCK_UN)
 
-    elif last_line == "02":
+    elif last_line == "2":
         # Stop the current song, if there is one
         if current_song is not None:
             os.system("killall aplay")
@@ -61,10 +61,10 @@ while continue_playing:
         # Set the file to unknown state.
         with open(file_path, "w") as f:
             fcntl.flock(f, fcntl.LOCK_EX)
-            f.write("09\n") 
+            f.write("9\n") 
             fcntl.flock(f, fcntl.LOCK_UN) 
 
-    elif last_line == "03":
+    elif last_line == "3":
         # Stop the current song, if there is one
         if current_song is not None:
             os.system("killall aplay")
@@ -79,10 +79,10 @@ while continue_playing:
         # Set the file to unknown state.
         with open(file_path, "w") as f:
             fcntl.flock(f, fcntl.LOCK_EX)
-            f.write("09\n") 
+            f.write("9\n") 
             fcntl.flock(f, fcntl.LOCK_UN)
 
-    elif last_line == "04":
+    elif last_line == "4":
         # Stop the current song, if there is one
         if current_song is not None:
             os.system("killall aplay")
@@ -93,7 +93,7 @@ while continue_playing:
         # Set the file to unknown state.
         with open(file_path, "w") as f:
             fcntl.flock(f, fcntl.LOCK_EX)
-            f.write("09\n") 
+            f.write("9\n") 
             fcntl.flock(f, fcntl.LOCK_UN)
     else:
         pass

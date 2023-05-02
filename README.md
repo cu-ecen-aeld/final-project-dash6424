@@ -23,6 +23,8 @@ https://github.com/cu-ecen-aeld/final-project-sachininja/tree/integrated_build
 
 # Files:
 1. asound.conf - Contains the soundcard configuration details with default media format to be 44100kHz, 16bits per sample and stereo channel. Sets the i2s in master mode.
+Add this file to the following path of buildroot image:
+<Base_directory>//buildroot/board/raspberrypi3/config_3.txt --> Considering raspberry pi 3B/3B+. In case of other targets, add it to respective boot config.txt
 2. config.txt - This is a bootup config file that is not required to be pushed on buildroot but has 3 important soundcard packages that need to be booted on rpi.
 dtoverlay=hifiberry-dac
 dtoverlay=i2s-mmap
